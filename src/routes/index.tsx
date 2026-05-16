@@ -28,14 +28,24 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-function GhostAuditCTA({ onClick }: { onClick: () => void }) {
+function GhostAuditCTA({ onClick: _onClick }: { onClick?: () => void }) {
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (typeof window === "undefined") return;
+    const ref = new URLSearchParams(window.location.search).get("ref");
+    if (ref) {
+      e.preventDefault();
+      window.location.href = `https://app.clawbackvault.com/ghost-audit?ref=${encodeURIComponent(ref)}`;
+    }
+  };
+
   return (
-    <button
-      onClick={onClick}
+    <a
+      href="https://app.clawbackvault.com/ghost-audit"
+      onClick={handleClick}
       className="inline-flex h-12 items-center justify-center rounded-md bg-brand-orange px-6 text-sm font-medium text-white shadow-md shadow-brand-orange/30 transition-opacity hover:opacity-90"
     >
       See who's about to refinance →
-    </button>
+    </a>
   );
 }
 

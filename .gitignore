@@ -20,6 +20,16 @@ dist-ssr
 .wrangler/
 .dev.vars
 
+# Environment files (never commit secrets)
+.env
+.env.local
+.env.*.local
+
+# Local tooling / lockfiles from other package managers
+# (repo is bun-based; bun.lock is the source of truth)
+.claude-flow/
+package-lock.json
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

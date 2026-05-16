@@ -27,12 +27,12 @@ export function Header() {
             </Link>
           ))}
         </nav>
-        <Link
-          to="/contact"
+        <a
+          href="https://app.clawbackvault.com/ghost-audit"
           className="inline-flex h-9 items-center justify-center rounded-md bg-brand-orange px-4 text-sm font-medium text-white shadow-sm transition-opacity hover:opacity-90"
         >
           Free Ghost Audit
-        </Link>
+        </a>
       </div>
     </header>
   );

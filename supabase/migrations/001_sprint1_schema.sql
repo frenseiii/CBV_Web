@@ -1,13 +1,37 @@
 -- =====================================================================
--- 001_sprint1_schema.sql
--- ClawbackVault Sprint 1 schema (v11)
--- Additive only. Safe to re-run.
--- Apply via: `supabase db push` or paste into the Supabase SQL editor.
+-- 001_sprint1_schema.sql  ──  SUPERSEDED.  DO NOT APPLY.
+-- =====================================================================
+-- This file was written during the cbv-app scaffolding session before
+-- we discovered that the Clawback Shield backend (the `cb/` repo, also
+-- known as `clawbackshield`) is the actual product application.
+--
+-- Canonical schema lives in:   <cb-repo>/supabase/migrations/001-018
+-- That schema is already deployed to Supabase project zdowaetbjtdojgkgoxmn
+-- and is materially different from this file (different broker_profiles
+-- PK shape, different signal_vocabulary column names, different OAuth
+-- token table — `oauth_tokens` instead of `broker_gmail_tokens`, with
+-- AES-256-GCM-encrypted tokens).
+--
+-- Running this migration would either no-op (tables already exist) or
+-- collide on column types. Either way it is wrong.
+--
+-- Kept in the repo as a historical reference for what the marketing
+-- repo *thought* it needed before the two-tier product split was
+-- understood. See INTEGRATION.md for the current cb/ <-> cbv-app split.
+--
+-- Apply nothing from this file. The guard below makes that automatic.
 -- =====================================================================
 
+DO $$ BEGIN
+  RAISE EXCEPTION
+    '001_sprint1_schema.sql is SUPERSEDED. Use cb/ migrations (001-018) instead.';
+END $$;
+
 -- ---------------------------------------------------------------------
+-- Original content preserved below for reference only.
+-- ---------------------------------------------------------------------
+
 -- Extensions
--- ---------------------------------------------------------------------
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
 
 -- ---------------------------------------------------------------------
